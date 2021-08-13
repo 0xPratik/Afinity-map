@@ -1,13 +1,5 @@
-import {
-  Box,
-  Text,
-  Heading,
-  Flex,
-  Container,
-  Icon,
-  Button,
-} from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { Box, Text, Flex, Container, Button } from "@chakra-ui/react";
+import { useState,useEffect } from "react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Card from "./components/Card";
 import AddFilterNav from "./components/AddFilterNav";
@@ -16,7 +8,7 @@ import { HighlightContext } from "./context/HighlightContext";
 import { BucketContext } from "./context/Bucket/BucketContext";
 import BucketReducer from "./context/Bucket/reducer";
 import reducers from "./context/reducers";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function App() {
   // const val = JSON.parse(localStorage.getItem('localhighlights'));
@@ -24,19 +16,18 @@ function App() {
   // const bucket = JSON.parse(localStorage.getItem('buckets'));
   // console.log(bucket);
 
-  const initialHighlight = [];
-  const initialBucket = [];
+  const [initialHighlight,setinitialHighlight] = useState([])
+  const [initialBucket,setinitialBucket] = useState([])
+
   const [highlights, dispatch] = useReducer(reducers, initialHighlight);
   const [buckets, dispatchBucket] = useReducer(BucketReducer, initialBucket);
 
-  console.log("BUCKETS", buckets);
-
   useEffect(() => {
     if (initialBucket === []) {
-      initialBucket = JSON.parse(localStorage.getItem("buckets"));
+      setinitialBucket(JSON.parse(localStorage.getItem("buckets")))
     }
     if (initialHighlight === []) {
-      initialHighlight = JSON.parse(localStorage.getItem("localhighlights"));
+      setinitialHighlight(JSON.parse(localStorage.getItem("localhighlights")))
     }
   }, []);
 
@@ -79,18 +70,18 @@ function App() {
             </Box>
           </Flex>
           <AddFilterNav />
-              <Box
-                maxW="container.xl"
-                d="flex"
-                alignItems="flex-start"
-                justifyItems="space-evenly"
-                flexWrap="wrap"
-                alignItems="flex-start"
-              >
-                {highlights.map((highlight, index) => {
-                  return <Card key={index} highlight={highlight} />;
-                })}
-              </Box>
+          <Box
+            maxW="container.xl"
+            d="flex"
+            alignItems="flex-start"
+            justifyItems="space-evenly"
+            flexWrap="wrap"
+            alignItems="flex-start"
+          >
+            {highlights.map((highlight, index) => {
+              return <Card key={index} highlight={highlight} />;
+            })}
+          </Box>
         </Container>
       </HighlightContext.Provider>
     </BucketContext.Provider>

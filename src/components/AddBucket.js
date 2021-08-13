@@ -1,9 +1,6 @@
 import {
     Box,
     Button,
-    Text,
-    Flex,
-    Heading,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -11,10 +8,8 @@ import {
     ModalCloseButton,
     ModalBody,
     Input,
-    Textarea,
-    Select,
   } from "@chakra-ui/react";
-  import { useState, useEffect, useContext } from "react";
+  import { useEffect, useContext } from "react";
   import { AddIcon } from "@chakra-ui/icons";
   import { nanoid } from "nanoid";
   import {BucketContext} from "../context/Bucket/BucketContext"
@@ -45,13 +40,6 @@ export default function AddBucket() {
     return error;
   }
 
-  function validateUserName(value) {
-    let error;
-    if (!value) {
-      error = "Your name is required";
-    }
-    return error;
-  }
     return (
         <Box ml={2}>
         <Button mr={2} colorScheme="teal" onClick={onOpen}>

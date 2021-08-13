@@ -1,13 +1,6 @@
 import {
     Box,
     Button,
-    Text,
-    Flex,
-    Heading,
-    Menu,
-    MenuItem,
-    MenuList,
-    MenuButton,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -18,11 +11,11 @@ import {
     Textarea,
     Select,
   } from "@chakra-ui/react";
-  import { useState, useEffect, useContext } from "react";
+  import {  useEffect, useContext } from "react";
   import { AddIcon } from "@chakra-ui/icons";
   import { nanoid } from "nanoid";
   import { ADD_HIGHLIGHT } from "../context/Actions.types";
-  import {ADD_HIGHLIGHT_BUCKET} from "../context/Bucket/Actions.types"
+  // import {ADD_HIGHLIGHT_BUCKET} from "../context/Bucket/Actions.types"
   import { HighlightContext } from "../context/HighlightContext";
   import {BucketContext} from "../context/Bucket/BucketContext"
 
@@ -32,14 +25,13 @@ import {
     FormControl,
     FormLabel,
     FormErrorMessage,
-    FormHelperText,
     useDisclosure,
   } from "@chakra-ui/react";
 
 export default function AddHighlight() {
     const { isOpen, onOpen, onClose } = useDisclosure();
   const { dispatch, highlights } = useContext(HighlightContext);
-  const {dispatchBucket,buckets} = useContext(BucketContext);
+  const {buckets} = useContext(BucketContext);
 
 
   useEffect(() => {
@@ -77,11 +69,12 @@ export default function AddHighlight() {
                 onSubmit={(values, actions) => {
                   const id = nanoid();
                   const hilight = { ...values, id: id };
-                  console.log(hilight);
+                  
                   buckets.map(b => {
                       if(b.id === hilight.bucketId)
                       {
                           b.highlights.push(id);
+
                       }
                   })
                 //   dispatchBucket({type:ADD_HIGHLIGHT_BUCKET,payload:{id:id,bucket_id:hilight.bucketId}});

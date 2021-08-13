@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Flex, Button, Divider } from "@chakra-ui/react";
+import { Box, Text, Flex, Button, } from "@chakra-ui/react";
 import {DELETE_HIGHLIGHT,UPDATE_HIGHLIGHT} from "../context/Actions.types"
 import {AddIcon} from "@chakra-ui/icons"
 import { useState,useContext,useEffect } from "react";
@@ -7,7 +7,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Select,
@@ -23,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 import {BucketContext} from "../context/Bucket/BucketContext"
 import {HighlightContext} from "../context/HighlightContext"
-import {UPDATE_BUCKET} from "../context/Bucket/Actions.types"
+// import {UPDATE_BUCKET} from "../context/Bucket/Actions.types"
 
 export default function Card({ highlight }) {
 
@@ -35,13 +34,13 @@ export default function Card({ highlight }) {
     console.log(buckets);
 
     const FindBucketName = (bid) => {
-      const bucketName = buckets.filter(b => b.id == bid )
+      const bucketName = buckets.filter(b => b.id === bid )
       setBucketName(bucketName[0]);
     }
 
     useEffect(() => {
       FindBucketName(highlight.bucketId)
-    },[bucketName,buckets])
+    },[bucketName,buckets,highlight])
 
     const updateHighlight = (id,content,user_name,bucket_id) => {
       dispatch({type:UPDATE_HIGHLIGHT,payload:{id:id,newContent:content,newUser:user_name,bucketId:bucket_id}})
