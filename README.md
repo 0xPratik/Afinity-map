@@ -1,6 +1,6 @@
 # Afinity Map
 
-## There is an Error in Deployment Soo please refer to use it locally i am trying my best to deploy it.
+## Deployment Link is -> [Link](https://propratik1405.github.io/Afinity-map/).
 
 # High level architecture of the application
 
