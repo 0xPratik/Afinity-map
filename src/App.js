@@ -16,22 +16,31 @@ function App() {
   // const bucket = JSON.parse(localStorage.getItem('buckets'));
   // console.log(bucket);
 
-  const [initialHighlight,setinitialHighlight] = useState([])
-  const [initialBucket,setinitialBucket] = useState([])
+  const getLocalHighlights = () => {
+    const list  = JSON.parse(localStorage.getItem('localhighlights'));
 
-  const [highlights, dispatch] = useReducer(reducers, initialHighlight);
-  const [buckets, dispatchBucket] = useReducer(BucketReducer, initialBucket);
-
-  useEffect(() => {
-    if (initialBucket === []) {
-      setinitialBucket(JSON.parse(localStorage.getItem("buckets")))
+    if(list)
+    {
+      return JSON.parse(localStorage.getItem('localhighlights'));
+    }else {
+      return []
     }
-    if (initialHighlight === []) {
-      setinitialHighlight(JSON.parse(localStorage.getItem("localhighlights")))
-    }
-  }, []);
+  }
 
-  const handleDragEnd = (result) => {};
+  const getLocalBuckets = () => {
+    const list  = JSON.parse(localStorage.getItem('buckets'));
+    console.log("LOCAL LIST",list)
+
+    if(list)
+    {
+      return JSON.parse(localStorage.getItem('buckets'));
+    }else{
+      return []
+    }
+  }
+  const [highlights, dispatch] = useReducer(reducers, getLocalHighlights());
+  const [buckets, dispatchBucket] = useReducer(BucketReducer, getLocalBuckets());
+
 
   return (
     <BucketContext.Provider value={{ buckets, dispatchBucket }}>
