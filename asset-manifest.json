@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/Afinity-map/static/js/main.f5addb05.chunk.js",
+    "main.js.map": "/Afinity-map/static/js/main.f5addb05.chunk.js.map",
+    "runtime-main.js": "/Afinity-map/static/js/runtime-main.9f365d1a.js",
+    "runtime-main.js.map": "/Afinity-map/static/js/runtime-main.9f365d1a.js.map",
+    "static/js/2.1644d2dd.chunk.js": "/Afinity-map/static/js/2.1644d2dd.chunk.js",
+    "static/js/2.1644d2dd.chunk.js.map": "/Afinity-map/static/js/2.1644d2dd.chunk.js.map",
+    "index.html": "/Afinity-map/index.html",
+    "static/js/2.1644d2dd.chunk.js.LICENSE.txt": "/Afinity-map/static/js/2.1644d2dd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9f365d1a.js",
+    "static/js/2.1644d2dd.chunk.js",
+    "static/js/main.f5addb05.chunk.js"
+  ]
+}
